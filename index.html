@@ -1,101 +1,270 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#080b14">
-<title>FACUNDO MARENGO | Educación</title>
+<title>Facundo Marengo | Educación</title>
 
 <style>
+:root {
+  --bg:#080b14;
+  --surface:#151e2e;
+  --line:#29364c;
+  --blue:#83bdff;
+  --muted:#b8c5d5;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;background:#080b14;color:white;
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  margin:0;
+  background:var(--bg);
+  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 header{
- padding:22px 6%;display:flex;justify-content:space-between;
- align-items:center;background:#101522;
- position:sticky;top:0;z-index:10;
+  padding:20px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#101522;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
-.logo{font-size:21px;font-weight:800;letter-spacing:2px}
-nav a{color:#ddd;text-decoration:none;margin-left:18px;font-size:14px}
-.hero{padding:85px 7%;background:linear-gradient(110deg,#080b14,#172c48)}
-.tag{color:#80baff;letter-spacing:4px;font-size:12px}
-.hero h1{font-size:clamp(40px,7vw,76px);margin:15px 0}
-.hero p,.intro{font-size:18px;color:#b8c5d5;line-height:1.7}
+.logo{
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  margin-left:17px;
+  font-size:14px;
+}
+nav a:hover{color:var(--blue)}
+.hero{
+  min-height:550px;
+  padding:90px 7%;
+  display:flex;
+  align-items:center;
+  background:
+  linear-gradient(90deg,rgba(5,9,17,.95),rgba(5,9,17,.4)),
+  url("https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1800&q=90") center/cover;
+}
+.hero-content{max-width:750px}
+.tag{
+  color:var(--blue);
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:bold;
+}
+h1{
+  font-size:clamp(42px,7vw,76px);
+  margin:18px 0;
+}
+.hero p,.intro{
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
 .button{
- display:inline-block;background:white;color:#111;
- padding:14px 24px;border-radius:30px;
- text-decoration:none;font-weight:700;border:0;cursor:pointer;
+  display:inline-block;
+  background:white;
+  color:#111;
+  padding:14px 24px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  border:0;
+  cursor:pointer;
 }
-section{padding:45px 7%}
-h2{font-size:30px}
+section{padding:65px 7%}
+h2{font-size:34px}
 .grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
- gap:22px;margin-top:28px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+  margin-top:28px;
 }
 .subject{
- position:relative;height:300px;border-radius:19px;
- overflow:hidden;background:#182338;
- border:1px solid #29364c;cursor:pointer;
+  position:relative;
+  height:320px;
+  border-radius:19px;
+  overflow:hidden;
+  background:#182338;
+  border:1px solid #29364c;
+  cursor:pointer;
+  color:white;
+  padding:0;
+  text-align:left;
 }
 .subject img{
- width:100%;height:100%;object-fit:cover;
- position:absolute;inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  inset:0;
+  transition:transform .5s;
 }
+.subject:hover img{transform:scale(1.07)}
 .subject:after{
- content:"";position:absolute;inset:0;
- background:linear-gradient(transparent,rgba(0,0,0,.95));
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.95));
 }
-.subject-info{position:absolute;bottom:20px;left:20px;z-index:2}
+.subject-info{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  z-index:2;
+}
 .subject-info h3{font-size:25px;margin:0 0 7px}
 .subject-info p{color:#ddd}
-.price{
- display:inline-block;background:#243b58;
- padding:8px 13px;border-radius:20px;font-weight:bold;
+.pill{
+  display:inline-block;
+  background:#243b58;
+  padding:8px 13px;
+  border-radius:20px;
+  font-weight:bold;
 }
 .panel{
- background:#151e2e;border:1px solid #29364c;
- padding:22px;border-radius:16px;margin:20px 0;
+  background:var(--surface);
+  border:1px solid var(--line);
+  padding:24px;
+  border-radius:17px;
+  margin:20px 0;
 }
-#course{display:none}
-.close{
- background:#26344a;color:white;border:0;
- padding:12px 20px;border-radius:25px;cursor:pointer;
+#courseView{display:none}
+#courseView.active{
+  display:block;
+  animation:enter .55s cubic-bezier(.22,.75,.18,1);
 }
+@keyframes enter{
+  from{
+    opacity:0;
+    transform:translateX(45px) scale(.98);
+    filter:blur(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0) scale(1);
+    filter:blur(0);
+  }
+}
+.course-hero{
+  min-height:390px;
+  padding:60px 7%;
+  display:flex;
+  align-items:end;
+  background-position:center;
+  background-size:cover;
+  position:relative;
+}
+.course-hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(5,9,17,.9),rgba(5,9,17,.25));
+}
+.course-hero-content{position:relative;z-index:1}
+.course-hero h1{font-size:60px}
+.course-body{padding:35px 7%}
 .video-container{
- width:100%;aspect-ratio:16/9;background:#000;
- border-radius:14px;overflow:hidden;margin-top:20px;
+  width:100%;
+  aspect-ratio:16/9;
+  background:black;
+  border-radius:15px;
+  overflow:hidden;
+  margin-top:20px;
 }
-.video-container iframe{width:100%;height:100%;border:0}
+.video-container iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+.back{
+  background:#26344a;
+  color:white;
+  margin-bottom:20px;
+}
 .progress{
- height:13px;background:#29364c;
- border-radius:20px;overflow:hidden;margin:15px 0;
+  height:12px;
+  background:#29364c;
+  border-radius:20px;
+  overflow:hidden;
+  margin:15px 0;
 }
 .progress-bar{
- height:100%;width:0;background:#65aaff;transition:.3s;
+  height:100%;
+  width:0;
+  background:#65aaff;
+  transition:.3s;
 }
-.question{padding:17px 0;border-bottom:1px solid #29364c}
-.question label{display:block;margin:12px 0;color:#ddd}
-input[type=radio]{margin-right:8px}
-input[type=email],input[type=password],input[type=text]{
- width:100%;padding:13px;background:#080f1d;color:white;
- border:1px solid #40516d;border-radius:9px;
- margin:8px 0 15px;
+.question{
+  padding:17px 0;
+  border-bottom:1px solid #29364c;
+}
+.question label{
+  display:block;
+  margin:12px 0;
+  color:#ddd;
+}
+.book img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+}
+.book-content{padding:18px}
+.price{
+  font-weight:bold;
+  font-size:19px;
+  color:var(--blue);
+}
+.about-layout{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:35px;
+  align-items:center;
+}
+.about-image{
+  min-height:430px;
+  border-radius:20px;
+  background:url("https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=90") center/cover;
+}
+.about-text p{
+  color:var(--muted);
+  line-height:1.85;
+  font-size:16px;
+}
+input[type=text],input[type=email],input[type=password]{
+  width:100%;
+  padding:14px;
+  background:#080f1d;
+  color:white;
+  border:1px solid #40516d;
+  border-radius:9px;
+  margin:8px 0 17px;
 }
 footer{
- background:#101522;padding:35px 7%;
- text-align:center;color:#aeb9c9;line-height:2;
+  background:#101522;
+  padding:35px 7%;
+  text-align:center;
+  color:#aeb9c9;
+  line-height:2;
 }
-@media(max-width:600px){
- header{flex-direction:column;gap:15px}
- nav a{margin:0 7px}
- .hero{padding:60px 6%}
- section{padding:35px 6%}
- .subject{height:260px}
+@media(max-width:700px){
+  header{flex-direction:column;gap:15px}
+  nav a{margin:0 6px;font-size:12px}
+  .hero{padding:65px 6%}
+  section{padding:45px 6%}
+  .about-layout{grid-template-columns:1fr}
+  .about-image{min-height:250px}
+  .course-hero{min-height:300px}
+  .course-hero h1{font-size:43px}
 }
 </style>
 </head>
@@ -103,333 +272,474 @@ footer{
 <body>
 
 <header>
- <div class="logo">FACUNDO MARENGO</div>
- <nav>
-  <a href="#materias">Materias</a>
-  <a href="#biblioteca">Biblioteca</a>
-  <a href="#cuenta">Mi cuenta</a>
- </nav>
+  <div class="logo">FACUNDO MARENGO</div>
+  <nav>
+    <a href="#materias">Materias</a>
+    <a href="#libros">Libros</a>
+    <a href="#quien-soy">Quién soy</a>
+    <a href="#cuenta">Mi cuenta</a>
+  </nav>
 </header>
 
+<main id="home">
+
+<!-- PORTADA -->
 <div class="hero">
- <div class="tag">PLATAFORMA EDUCATIVA</div>
- <h1>El conocimiento<br>transforma el futuro.</h1>
- <p>Explora la ciencia, descubre nuevas ideas y aprende algo nuevo cada día.</p>
- <a href="#materias" class="button">Explorar materias →</a>
+  <div class="hero-content">
+    <div class="tag">PLATAFORMA EDUCATIVA</div>
+    <h1>El conocimiento transforma el futuro.</h1>
+    <p>
+      Explorá la ciencia, descubrí nuevas ideas y aprendé
+      algo nuevo cada día. El conocimiento debe estar
+      al alcance de todas las personas.
+    </p>
+    <a href="#materias" class="button">Explorar materias →</a>
+  </div>
 </div>
 
+<!-- MATERIAS -->
 <section id="materias">
- <div class="tag">APRENDE Y DESCUBRE</div>
- <h2>Explora nuestras materias</h2>
- <p class="intro">
- Selecciona una materia para comenzar a aprender.
- </p>
+  <div class="tag">APRENDE Y DESCUBRE</div>
+  <h2>Explorá nuestras materias</h2>
+  <p class="intro">
+    Seleccioná una materia para ingresar a su aula virtual.
+  </p>
 
- <div class="grid">
+  <div class="grid">
 
-  <div class="subject" onclick="openCourse('biologia')">
-   <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1000&q=85" alt="Biología">
-   <div class="subject-info">
-    <h3>🧬 Biología</h3>
-    <p>La ciencia de la vida</p>
-    <span class="price">₲50.000 / mes</span>
-   </div>
+    <button class="subject" onclick="openCourse('biologia')">
+      <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1000&q=90" alt="Biología">
+      <span class="subject-info">
+        <h3>🧬 Biología</h3>
+        <p>La ciencia de la vida</p>
+        <span class="pill">Entrar al aula →</span>
+      </span>
+    </button>
+
+    <button class="subject" onclick="openCourse('quimica')">
+      <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&w=1000&q=90" alt="Química">
+      <span class="subject-info">
+        <h3>🧪 Química</h3>
+        <p>La ciencia de la materia</p>
+        <span class="pill">Entrar al aula →</span>
+      </span>
+    </button>
+
+    <button class="subject" onclick="openCourse('matematica')">
+      <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1000&q=90" alt="Matemáticas">
+      <span class="subject-info">
+        <h3>📐 Matemáticas</h3>
+        <p>El lenguaje de la ciencia</p>
+        <span class="pill">Entrar al aula →</span>
+      </span>
+    </button>
+
+    <button class="subject" onclick="openCourse('fisica')">
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1000&q=90" alt="Física">
+      <span class="subject-info">
+        <h3>⚛️ Física</h3>
+        <p>Las leyes del universo</p>
+        <span class="pill">Entrar al aula →</span>
+      </span>
+    </button>
+
   </div>
-
-  <div class="subject" onclick="openCourse('quimica')">
-   <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&w=1000&q=85" alt="Química">
-   <div class="subject-info">
-    <h3>🧪 Química</h3>
-    <p>La ciencia de la materia</p>
-    <span class="price">₲50.000 / mes</span>
-   </div>
-  </div>
-
-  <div class="subject" onclick="openCourse('matematica')">
-   <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1000&q=85" alt="Matemáticas">
-   <div class="subject-info">
-    <h3>📐 Matemáticas</h3>
-    <p>El lenguaje de la ciencia</p>
-    <span class="price">₲50.000 / mes</span>
-   </div>
-  </div>
-
-  <div class="subject" onclick="openCourse('fisica')">
-   <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1000&q=85" alt="Física">
-   <div class="subject-info">
-    <h3>⚛️ Física</h3>
-    <p>Las leyes del universo</p>
-    <span class="price">₲50.000 / mes</span>
-   </div>
-  </div>
-
- </div>
 </section>
 
-<section id="course">
+<!-- LIBROS -->
+<section id="libros">
+  <div class="tag">BIBLIOTECA EDUCATIVA</div>
+  <h2>Libros</h2>
+  <p class="intro">
+    Materiales educativos para profundizar en cada área.
+    Próximamente estarán disponibles para su adquisición.
+  </p>
 
- <button class="close" onclick="closeCourse()">← Volver a materias</button>
+  <div class="grid">
 
- <div class="tag" style="margin-top:30px">
-  FACUNDO MARENGO · AULA VIRTUAL
- </div>
+    <div class="panel book">
+      <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=900&q=85" alt="Libros">
+      <div class="book-content">
+        <h3>Biología</h3>
+        <p>Introducción al estudio de la vida.</p>
+        <div class="price">G. 25.000</div>
+      </div>
+    </div>
 
- <h2 id="courseTitle"></h2>
- <p id="courseDescription" class="intro"></p>
+    <div class="panel book">
+      <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=900&q=85" alt="Libro">
+      <div class="book-content">
+        <h3>Química</h3>
+        <p>Materia, elementos y transformaciones.</p>
+        <div class="price">G. 25.000</div>
+      </div>
+    </div>
 
- <div class="panel">
-  <h3>🎬 Clase en video</h3>
-  <p>La primera clase comenzará automáticamente al entrar en la materia.</p>
+    <div class="panel book">
+      <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=85" alt="Libros">
+      <div class="book-content">
+        <h3>Matemáticas</h3>
+        <p>Números, lógica y razonamiento.</p>
+        <div class="price">G. 25.000</div>
+      </div>
+    </div>
 
-  <div class="video-container">
-   <iframe
-    id="youtubePlayer"
-    title="Clase educativa"
-    src=""
-    referrerpolicy="strict-origin-when-cross-origin"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-   </iframe>
+    <div class="panel book">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=85" alt="Libro">
+      <div class="book-content">
+        <h3>Física</h3>
+        <p>La materia y las leyes del universo.</p>
+        <div class="price">G. 25.000</div>
+      </div>
+    </div>
+
   </div>
- </div>
-
- <div class="panel">
-  <h3>💳 Membresía mensual</h3>
-  <h2>₲50.000</h2>
-  <p>Suscripción mensual individual para esta materia.</p>
-  <button class="button" onclick="membership()">
-   Solicitar membresía
-  </button>
- </div>
-
- <div class="panel">
-  <h3>📊 Progreso de aprendizaje</h3>
-  <div class="progress">
-   <div class="progress-bar" id="progressBar"></div>
-  </div>
-  <strong id="progressText">0% completado</strong>
- </div>
-
- <div class="panel">
-  <h3>📝 Examen de opción múltiple</h3>
-  <div id="questions"></div>
-  <button class="button" onclick="checkAnswers()">Corregir examen</button>
-  <p id="result"></p>
- </div>
-
- <div class="panel">
-  <h3>🎓 Certificado</h3>
-  <p>Certificado disponible al completar el 100% del curso.</p>
-  <button class="button" onclick="certificate()">Consultar certificado</button>
- </div>
-
+  <p class="intro">Los libros estarán disponibles próximamente.</p>
 </section>
 
+<!-- QUIÉN SOY -->
+<section id="quien-soy">
+  <div class="about-layout">
+
+    <div class="about-text">
+      <div class="tag">CONOCE AL CREADOR</div>
+      <h2>¿Quién soy?</h2>
+
+      <p>
+        Mi nombre es <strong>Facundo Marengo</strong>,
+        tengo 26 años y soy estudiante de la carrera de Biología.
+      </p>
+
+      <p>
+        Soy una persona que siente una profunda curiosidad
+        por la ciencia, el conocimiento y la posibilidad
+        de comprender el mundo que nos rodea.
+      </p>
+
+      <p>
+        También formo parte del espectro autista
+        (anteriormente conocido como síndrome de Asperger),
+        una característica que forma parte de mi identidad
+        y de mi manera particular de percibir e interpretar
+        el mundo.
+      </p>
+
+      <h3>¿Por qué decidí crear esta plataforma?</h3>
+
+      <p>
+        Creo que en Paraguay todavía existen importantes
+        limitaciones para acceder a una educación terciaria
+        y universitaria. Muchas personas tienen curiosidad
+        por aprender y desean acercarse al conocimiento
+        científico, pero no siempre cuentan con los recursos
+        económicos, las oportunidades o las condiciones
+        necesarias para hacerlo.
+      </p>
+
+      <p>
+        Frente a esa realidad, decidí crear este espacio.
+        Mi objetivo es acercar el conocimiento científico
+        a todas las personas, sin importar dónde vivan,
+        cuál sea su situación económica o qué oportunidades
+        educativas hayan tenido.
+      </p>
+
+      <h3>Mi propósito</h3>
+
+      <p>
+        Quiero explicar Biología, Química, Matemáticas y Física
+        de una manera sencilla, clara y directa, sin rodeos
+        innecesarios ni explicaciones excesivamente complicadas.
+      </p>
+
+      <p>
+        Mi intención es que cualquier persona pueda entrar,
+        explorar una materia, mirar una clase, leer un libro
+        y descubrir nuevos conocimientos a su propio ritmo.
+      </p>
+
+      <p>
+        No pretendo reemplazar a las universidades ni a las
+        instituciones educativas. Quiero contribuir, desde
+        mis posibilidades, a que más personas tengan acceso
+        a herramientas para aprender, comprender y desarrollar
+        su pensamiento.
+      </p>
+
+      <p>
+        <strong>
+          Porque el conocimiento no debería ser un privilegio.
+          Debería ser una oportunidad para todos.
+        </strong>
+      </p>
+
+      <p>— Facundo Marengo</p>
+    </div>
+
+    <div class="about-image"></div>
+
+  </div>
+</section>
+
+<!-- CUENTA -->
 <section id="cuenta">
- <div class="tag">ÁREA DEL ESTUDIANTE</div>
- <h2>Iniciar sesión / Registrarse</h2>
- <div class="panel">
-  <h3>Crear cuenta</h3>
-  <form onsubmit="register(event)">
-   <label>Nombre completo</label>
-   <input id="name" type="text" required>
-   <label>Correo electrónico</label>
-   <input id="email" type="email" required>
-   <label>Contraseña</label>
-   <input id="password" type="password" required minlength="6">
-   <button class="button">Registrarse</button>
-  </form>
-  <p id="accountMessage"></p>
- </div>
+  <div class="tag">ÁREA DEL ESTUDIANTE</div>
+  <h2>Crear una cuenta</h2>
+
+  <div class="panel">
+    <form onsubmit="register(event)">
+      <label>Nombre completo</label>
+      <input id="name" type="text" required>
+
+      <label>Correo electrónico</label>
+      <input id="email" type="email" required>
+
+      <label>Contraseña</label>
+      <input id="password" type="password" minlength="8" required>
+
+      <button class="button">Registrarse</button>
+    </form>
+    <p id="accountMessage"></p>
+  </div>
 </section>
 
-<section id="biblioteca">
- <div class="tag">CONOCIMIENTO SIN LÍMITES</div>
- <h2>Biblioteca educativa</h2>
- <div class="grid">
-  <div class="panel">
-   <h3>📖 Aprende cada día</h3>
-   <p>Descubre nuevos conceptos científicos.</p>
+</main>
+
+<!-- AULA VIRTUAL -->
+<section id="courseView">
+
+  <div class="course-hero" id="courseHero">
+    <div class="course-hero-content">
+      <div class="tag">FACUNDO MARENGO · AULA VIRTUAL</div>
+      <h1 id="courseTitle"></h1>
+      <p id="courseDescription" class="intro"></p>
+    </div>
   </div>
-  <div class="panel">
-   <h3>🔬 Ciencia y tecnología</h3>
-   <p>Explora los avances científicos.</p>
+
+  <div class="course-body">
+
+    <button class="button back" onclick="closeCourse()">
+      ← Volver a materias
+    </button>
+
+    <div class="panel">
+      <h3>🎬 Clases en video</h3>
+      <p>Seleccioná las clases disponibles en el reproductor.</p>
+
+      <div class="video-container">
+        <iframe
+          id="youtubePlayer"
+          title="Clase educativa"
+          src=""
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>📊 Progreso de aprendizaje</h3>
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <strong id="progressText">0% completado</strong>
+    </div>
+
+    <div class="panel">
+      <h3>📝 Examen de opción múltiple</h3>
+      <div id="questions"></div>
+      <button class="button" onclick="checkAnswers()">Corregir examen</button>
+      <p id="result"></p>
+    </div>
+
+    <div class="panel">
+      <h3>🎓 Certificado</h3>
+      <p>Consultá tu progreso para conocer los requisitos de certificación.</p>
+      <button class="button" onclick="certificate()">Consultar certificado</button>
+    </div>
+
   </div>
-  <div class="panel">
-   <h3>🎓 Educación</h3>
-   <p>Comprueba tus conocimientos.</p>
-  </div>
- </div>
 </section>
 
 <footer>
- <strong>FACUNDO MARENGO</strong><br>
- El conocimiento transforma el futuro.<br>
- Plataforma educativa independiente.<br>
- © 2026 Facundo Marengo
+  <strong>FACUNDO MARENGO</strong><br>
+  El conocimiento transforma el futuro.<br>
+  Plataforma educativa independiente.<br>
+  © 2026 Facundo Marengo
 </footer>
 
 <script>
+const courses = {
 
-const courses={
+  biologia:{
+    name:"Biología",
+    description:"Estudiá los seres vivos, sus estructuras, funciones y relaciones con el ambiente.",
+    image:"https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1800&q=90",
+    playlist:"PLhHz2kqcdywG9cxQ_8R_j5VVpn7jFTaFK",
+    questions:[
+      ["¿Cuál es la unidad básica de los seres vivos?",["Célula","Tejido","Órgano"],0],
+      ["¿Qué molécula contiene la información genética?",["Glucosa","ADN","Agua"],1],
+      ["¿Qué orgánulo produce gran parte del ATP?",["Ribosoma","Mitocondria","Núcleo"],1]
+    ]
+  },
 
- biologia:{
-  name:"Biología",
-  description:"Estudia los seres vivos, sus estructuras, funciones y relaciones con el ambiente.",
-  playlist:"PLhHz2kqcdywG9cxQ_8R_j5VVpn7jFTaFK",
-  questions:[
-   ["¿Cuál es la unidad básica de los seres vivos?",["Célula","Tejido","Órgano"],0],
-   ["¿Qué molécula contiene la información genética?",["Glucosa","ADN","Agua"],1],
-   ["¿Qué orgánulo produce gran parte del ATP?",["Ribosoma","Mitocondria","Núcleo"],1]
-  ]
- },
+  quimica:{
+    name:"Química",
+    description:"Explorá la composición, propiedades y transformaciones de la materia.",
+    image:"https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&w=1800&q=90",
+    playlist:"PLhHz2kqcdywE3XQTfG-DkE8JHF_u4_t56",
+    questions:[
+      ["¿Cuál es la fórmula del agua?",["CO2","H2O","O2"],1],
+      ["¿Qué representa el número atómico?",["Protones","Neutrones","Electrones externos"],0],
+      ["¿Qué enlace comparte electrones?",["Iónico","Covalente","Metálico"],1]
+    ]
+  },
 
- quimica:{
-  name:"Química",
-  description:"Estudia la composición, propiedades y transformaciones de la materia.",
-  playlist:"PLhHz2kqcdywE3XQTfG-DkE8JHF_u4_t56",
-  questions:[
-   ["¿Cuál es la fórmula del agua?",["CO2","H2O","O2"],1],
-   ["¿Qué representa el número atómico?",["Protones","Neutrones","Electrones externos"],0],
-   ["¿Qué enlace comparte electrones?",["Iónico","Covalente","Metálico"],1]
-  ]
- },
+  matematica:{
+    name:"Matemáticas",
+    description:"Desarrollá el pensamiento lógico mediante números, álgebra y geometría.",
+    image:"https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1800&q=90",
+    playlist:"PLhHz2kqcdywGkrFX0l0zamuAmFqMFxdy1",
+    questions:[
+      ["¿Cuánto es 7 × 8?",["54","56","64"],1],
+      ["¿Cuánto vale x en x + 5 = 12?",["5","7","8"],1],
+      ["¿Cuánto suman los ángulos de un triángulo?",["90°","180°","360°"],1]
+    ]
+  },
 
- matematica:{
-  name:"Matemáticas",
-  description:"Desarrolla el pensamiento lógico mediante números, álgebra y geometría.",
-  playlist:"PLhHz2kqcdywGkrFX0l0zamuAmFqMFxdy1",
-  questions:[
-   ["¿Cuánto es 7 × 8?",["54","56","64"],1],
-   ["¿Cuánto vale x en x + 5 = 12?",["5","7","8"],1],
-   ["¿Cuánto suman los ángulos de un triángulo?",["90°","180°","360°"],1]
-  ]
- },
-
- fisica:{
-  name:"Física",
-  description:"Comprende la materia, la energía, el movimiento y las leyes del universo.",
-  playlist:"PLhHz2kqcdywEoy05vxHYG771f5udrZR3D",
-  questions:[
-   ["¿Cuál es la unidad de fuerza?",["Julio","Newton","Vatio"],1],
-   ["¿Cuál es la unidad de energía?",["Julio","Metro","Segundo"],0],
-   ["¿Qué mide la velocidad?",["Masa","Desplazamiento por tiempo","Temperatura"],1]
-  ]
- }
+  fisica:{
+    name:"Física",
+    description:"Comprendé la materia, la energía, el movimiento y las leyes del universo.",
+    image:"https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1800&q=90",
+    playlist:"PLhHz2kqcdywEoy05vxHYG771f5udrZR3D",
+    questions:[
+      ["¿Cuál es la unidad de fuerza?",["Julio","Newton","Vatio"],1],
+      ["¿Cuál es la unidad de energía?",["Julio","Metro","Segundo"],0],
+      ["¿Qué mide la velocidad?",["Masa","Desplazamiento por tiempo","Temperatura"],1]
+    ]
+  }
 
 };
 
-let current=null;
+let current = null;
 
 function openCourse(key){
 
- current=key;
- const c=courses[key];
+  const c = courses[key];
+  if(!c) return;
 
- document.getElementById("courseTitle").textContent=c.name;
- document.getElementById("courseDescription").textContent=c.description;
+  current = key;
 
- const player=document.getElementById("youtubePlayer");
+  document.getElementById("courseTitle").textContent = c.name;
+  document.getElementById("courseDescription").textContent = c.description;
 
- // Carga la lista desde el primer video y solicita reproducción automática.
- // El clic del usuario sobre la materia inicia esta acción.
- player.src=
- "https://www.youtube.com/embed/videoseries?list="+
- encodeURIComponent(c.playlist)+
- "&autoplay=1&playsinline=1&rel=0&modestbranding=1";
+  document.getElementById("courseHero").style.backgroundImage =
+    `linear-gradient(90deg,rgba(5,9,17,.65),rgba(5,9,17,.15)),url("${c.image}")`;
 
- document.getElementById("questions").innerHTML=
- c.questions.map((q,i)=>`
- <div class="question">
-  <p><strong>${i+1}. ${q[0]}</strong></p>
-  ${q[1].map((option,j)=>`
-   <label>
-    <input type="radio" name="q${i}" value="${j}">
-    ${option}
-   </label>
-  `).join("")}
- </div>
- `).join("");
+  // El video se carga al entrar al aula, no en la portada.
+  document.getElementById("youtubePlayer").src =
+    "https://www.youtube.com/embed/videoseries?list=" +
+    encodeURIComponent(c.playlist) +
+    "&playsinline=1&rel=0&modestbranding=1";
 
- document.getElementById("result").textContent="";
- document.getElementById("course").style.display="block";
+  document.getElementById("questions").innerHTML =
+    c.questions.map((q,i)=>`
+      <div class="question">
+        <p><strong>${i+1}. ${q[0]}</strong></p>
+        ${q[1].map((option,j)=>`
+          <label>
+            <input type="radio" name="q${i}" value="${j}">
+            ${option}
+          </label>
+        `).join("")}
+      </div>
+    `).join("");
 
- updateProgress();
+  document.getElementById("result").textContent = "";
 
- document.getElementById("course").scrollIntoView({behavior:"smooth"});
+  document.getElementById("home").style.display = "none";
 
+  const view = document.getElementById("courseView");
+  view.style.display = "block";
+  view.classList.remove("active");
+
+  void view.offsetWidth;
+
+  view.classList.add("active");
+
+  updateProgress();
+
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function closeCourse(){
 
- document.getElementById("youtubePlayer").src="";
- document.getElementById("course").style.display="none";
- document.getElementById("materias").scrollIntoView({behavior:"smooth"});
- current=null;
+  document.getElementById("youtubePlayer").src = "";
 
+  document.getElementById("courseView").style.display = "none";
+  document.getElementById("courseView").classList.remove("active");
+
+  document.getElementById("home").style.display = "block";
+
+  current = null;
+
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function checkAnswers(){
 
- if(!current)return;
+  if(!current) return;
 
- const qs=courses[current].questions;
- let correct=0;
+  const qs = courses[current].questions;
+  let correct = 0;
 
- qs.forEach((q,i)=>{
-  const answer=document.querySelector(`input[name="q${i}"]:checked`);
-  if(answer && Number(answer.value)===q[2])correct++;
- });
+  qs.forEach((q,i)=>{
+    const answer = document.querySelector(`input[name="q${i}"]:checked`);
+    if(answer && Number(answer.value) === q[2]) correct++;
+  });
 
- const percent=Math.round(correct/qs.length*100);
+  const percent = Math.round(correct / qs.length * 100);
 
- localStorage.setItem("progress_"+current,percent);
+  localStorage.setItem("progress_" + current, percent);
 
- document.getElementById("result").textContent=
- "Resultado: "+correct+" de "+qs.length+
- " respuestas correctas. Progreso: "+percent+"%.";
+  document.getElementById("result").textContent =
+    "Resultado: " + correct + " de " + qs.length +
+    " respuestas correctas. Progreso: " + percent + "%.";
 
- updateProgress();
-
+  updateProgress();
 }
 
 function updateProgress(){
 
- const value=Number(localStorage.getItem("progress_"+current)||0);
+  if(!current) return;
 
- document.getElementById("progressBar").style.width=value+"%";
- document.getElementById("progressText").textContent=value+"% completado";
+  const value = Number(localStorage.getItem("progress_" + current) || 0);
 
-}
+  document.getElementById("progressBar").style.width = value + "%";
 
-function membership(){
-
- alert("La membresía de ₲50.000 mensuales requiere conectar una pasarela de pagos para activar los cobros recurrentes.");
-
+  document.getElementById("progressText").textContent =
+    value + "% completado";
 }
 
 function certificate(){
 
- const value=Number(localStorage.getItem("progress_"+current)||0);
+  const value = Number(localStorage.getItem("progress_" + current) || 0);
 
- if(value<100){
-  alert("Debes alcanzar el 100% de progreso para obtener el certificado.");
- }else{
-  alert("El certificado requiere integrar un sistema de emisión y envío por correo.");
- }
-
+  if(value < 100){
+    alert("Debés alcanzar el 100% de progreso para obtener el certificado.");
+  }else{
+    alert("La emisión del certificado requiere integrar un sistema de certificación.");
+  }
 }
 
 function register(event){
 
- event.preventDefault();
+  event.preventDefault();
 
- document.getElementById("accountMessage").textContent=
- "Para crear cuentas seguras se necesita conectar un servidor de autenticación.";
-
+  document.getElementById("accountMessage").textContent =
+    "Para crear cuentas seguras se necesita conectar un servidor de autenticación.";
 }
-
 </script>
 
 </body>
 </html>
+
