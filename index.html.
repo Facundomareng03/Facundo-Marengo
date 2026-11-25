@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FACUNDO MARENGO | Educación</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080b14;color:white;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+header{
+ padding:25px 7%;display:flex;justify-content:space-between;
+ align-items:center;background:#101522;
+ position:sticky;top:0;z-index:10;
+}
+.logo{font-size:21px;font-weight:800;letter-spacing:2px}
+nav a{color:#ddd;text-decoration:none;margin-left:18px;font-size:14px}
+.hero{
+ padding:90px 7% 75px;
+ background:linear-gradient(90deg,#080b14,#172c48);
+}
+.hero h1{font-size:clamp(40px,7vw,76px);margin:0}
+.hero p{font-size:19px;color:#c5d0df}
+.tag{color:#80baff;letter-spacing:4px;font-size:12px}
+.button{
+ display:inline-block;background:white;color:#111;
+ padding:14px 24px;border-radius:30px;
+ text-decoration:none;font-weight:700;margin-top:15px;
+ border:0;cursor:pointer;
+}
+section{padding:45px 7%}
+h2{font-size:29px}
+.intro{color:#aeb9c9;line-height:1.7}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+ gap:20px;margin-top:25px;
+}
+.subject{
+ position:relative;overflow:hidden;height:290px;
+ border-radius:19px;background:#182338;
+ cursor:pointer;transition:.35s;
+ border:1px solid #29364c;
+}
+.subject:hover{transform:scale(1.025)}
+.subject img{
+ width:100%;height:100%;object-fit:cover;
+ position:absolute;inset:0;
+ transition:.5s;
+}
+.subject:hover img{transform:scale(1.08)}
+.subject:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(transparent,rgba(0,0,0,.95));
+}
+.subject-info{position:absolute;bottom:20px;left:20px;z-index:2}
+.subject-info h3{font-size:25px;margin:0 0 7px}
+.subject-info p{margin:0;color:#ddd;font-size:13px}
+#detail{
+ display:none;position:fixed;inset:0;z-index:20;
+ background:#080b14;overflow:auto;
+ padding:35px 7%;
+ animation:enter .35s ease;
+}
+@keyframes enter{
+ from{opacity:0;transform:scale(.94)}
+ to{opacity:1;transform:scale(1)}
+}
+.close{font-size:18px;background:#26344a;color:white;
+ border:0;padding:12px 20px;border-radius:25px;cursor:pointer}
+.detail-img{width:100%;height:270px;object-fit:cover;border-radius:20px}
+.lesson{background:#151e2e;padding:20px;border-radius:15px;margin:15px 0}
+footer{
+ background:#101522;padding:35px 7%;color:#aeb9c9;
+ text-align:center;line-height:2;
+}
+footer a{color:#8fc4ff}
+@media(max-width:600px){
+ header{padding:18px 5%}
+ nav a{margin-left:8px;font-size:12px}
+ .hero{padding:65px 6%}
+ section{padding:35px 6%}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">FACUNDO MARENGO</div>
+ <nav>
+  <a href="#materias">Materias</a>
+  <a href="#biblioteca">Biblioteca</a>
+ </nav>
+</header>
+
+<div class="hero">
+ <div class="tag">PLATAFORMA EDUCATIVA</div>
+ <h1>El conocimiento<br>transforma el futuro.</h1>
+ <p>Explora la ciencia, descubre nuevas ideas y aprende algo nuevo cada día.</p>
+ <a href="#materias" class="button">Explorar materias →</a>
+</div>
+
+<section id="materias">
+ <div class="tag">APRENDE Y DESCUBRE</div>
+ <h2>Explora nuestras materias</h2>
+ <p class="intro">Selecciona una materia para entrar en su espacio educativo.</p>
+
+ <div class="grid">
+
+  <div class="subject" onclick="openSubject('Biología')">
+   <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=900" alt="Laboratorio de biología">
+   <div class="subject-info">
+    <h3>🧬 Biología</h3><p>La ciencia de la vida</p>
+   </div>
+  </div>
+
+  <div class="subject" onclick="openSubject('Física')">
+   <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=900" alt="Física y matemáticas">
+   <div class="subject-info">
+    <h3>⚛️ Física</h3><p>Descubre las leyes del universo</p>
+   </div>
+  </div>
+
+  <div class="subject" onclick="openSubject('Química')">
+   <img src="https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=900" alt="Experimento químico">
+   <div class="subject-info">
+    <h3>🧪 Química</h3><p>Explora la materia</p>
+   </div>
+  </div>
+
+  <div class="subject" onclick="openSubject('Matemáticas')">
+   <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=900" alt="Matemáticas">
+   <div class="subject-info">
+    <h3>📐 Matemáticas</h3><p>El lenguaje de la ciencia</p>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<section id="biblioteca">
+ <div class="tag">CONOCIMIENTO SIN LÍMITES</div>
+ <h2>Biblioteca educativa</h2>
+ <p class="intro">
+ Un espacio para descubrir conceptos, estudiar y ampliar tus conocimientos.
+ </p>
+ <div class="grid">
+  <div class="lesson">
+   <h3>📖 Aprende cada día</h3>
+   <p>Descubre nuevos conceptos científicos.</p>
+  </div>
+  <div class="lesson">
+   <h3>🔬 Ciencia y tecnología</h3>
+   <p>Explora los avances que transforman el mundo.</p>
+  </div>
+  <div class="lesson">
+   <h3>🎓 Educación</h3>
+   <p>El conocimiento es una herramienta para el futuro.</p>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="tag">CONTENIDO AUDIOVISUAL</div>
+ <h2>Canal de YouTube</h2>
+ <p class="intro">Continúa aprendiendo con nuestros contenidos audiovisuales.</p>
+ <a class="button" href="https://youtube.com/@codigobiologicodivulgador" target="_blank">
+ Visitar canal de YouTube →
+ </a>
+</section>
+
+<div id="detail">
+ <button class="close" onclick="closeSubject()">← Volver</button>
+ <div style="margin-top:30px">
+  <div class="tag">FACUNDO MARENGO · EDUCACIÓN</div>
+  <h1 id="detailTitle" style="font-size:42px"></h1>
+  <img id="detailImage" class="detail-img" alt="">
+  <h2 id="detailSubtitle"></h2>
+  <p id="detailText" class="intro"></p>
+  <div class="lesson">
+   <h3>📚 Introducción</h3>
+   <p id="detailIntro"></p>
+  </div>
+  <div class="lesson">
+   <h3>🔎 Explora y aprende</h3>
+   <p>Investiga, descubre y amplía tus conocimientos en esta materia.</p>
+  </div>
+ </div>
+</div>
+
+<footer>
+ <strong>FACUNDO MARENGO</strong><br>
+ El conocimiento transforma el futuro.<br>
+ Plataforma educativa independiente.<br>
+ © 2026 Facundo Marengo
+</footer>
+
+<script>
+const subjects={
+ "Biología":{
+  image:"https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1000",
+  subtitle:"La ciencia de la vida",
+  text:"Descubre los seres vivos, sus estructuras, funciones y relaciones con el ambiente.",
+  intro:"Estudia las células, la genética, la evolución, los ecosistemas y el cuerpo humano."
+ },
+ "Física":{
+  image:"https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1000",
+  subtitle:"Las leyes del universo",
+  text:"Comprende cómo funciona el universo a través de la energía y el movimiento.",
+  intro:"Explora la mecánica, la electricidad, el magnetismo, la luz y la energía."
+ },
+ "Química":{
+  image:"https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=1000",
+  subtitle:"La ciencia de la materia",
+  text:"Descubre de qué está hecho el mundo y cómo se transforma la materia.",
+  intro:"Aprende sobre átomos, elementos, moléculas, reacciones y enlaces químicos."
+ },
+ "Matemáticas":{
+  image:"https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1000",
+  subtitle:"El lenguaje de la ciencia",
+  text:"Desarrolla el pensamiento lógico y descubre el poder de los números.",
+  intro:"Explora álgebra, geometría, estadística, funciones y cálculo."
+ }
+};
+
+function openSubject(name){
+ const s=subjects[name];
+ document.getElementById("detailTitle").textContent=name;
+ document.getElementById("detailImage").src=s.image;
+ document.getElementById("detailSubtitle").textContent=s.subtitle;
+ document.getElementById("detailText").textContent=s.text;
+ document.getElementById("detailIntro").textContent=s.intro;
+ document.getElementById("detail").style.display="block";
+ document.body.style.overflow="hidden";
+}
+function closeSubject(){
+ document.getElementById("detail").style.display="none";
+ document.body.style.overflow="auto";
+}
+</script>
+</body>
+</html>
