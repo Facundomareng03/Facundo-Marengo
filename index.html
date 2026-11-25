@@ -62,118 +62,7 @@ button.btn:active,.btn.secondary:active{background:#0754bd;color:#fff;transform:
 .account-card form{flex:1;display:flex;flex-direction:column;align-items:stretch}
 .account-card form .btn{margin-top:auto}
 @media(max-width:560px){.account-grid{grid-template-columns:1fr}.account-card{min-height:0}.account-card h2,.account-card>p{min-height:0}}
-
-/* Ajuste solicitado: precio azul sin píldora y tarjetas de materias alineadas */
-.subject-price{
-  display:block;
-  width:auto;
-  max-width:none;
-  padding:0;
-  margin:12px 0;
-  border:0;
-  border-radius:0;
-  background:transparent;
-  color:#1769e0;
-  font-size:1rem;
-  font-weight:800;
-  letter-spacing:0;
-  box-shadow:none;
-}
-.subject-price span{
-  color:#1769e0;
-  font-size:.86rem;
-  font-weight:600;
-}
-.grid{align-items:stretch}
-.tile{
-  height:100%;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-.tile > div{
-  display:grid;
-  grid-template-rows:175px 2.8em 3.1em auto 10px 1.5em;
-  align-content:start;
-  min-width:0;
-}
-.tile-cover{
-  height:175px;
-  min-height:175px;
-  margin:-3px -3px 13px;
-}
-.tile h3{
-  height:2.8em;
-  min-height:0;
-  margin:0;
-  display:flex;
-  align-items:center;
-  line-height:1.35;
-}
-.tile > div > p.muted{
-  min-height:0;
-  height:3.1em;
-  margin:8px 0;
-  overflow:hidden;
-}
-.tile .subject-price{
-  align-self:center;
-  justify-self:start;
-  margin:8px 0;
-}
-.tile .progress-wrap{
-  align-self:center;
-  width:100%;
-  margin:0;
-}
-.tile > div > small{
-  align-self:center;
-  line-height:1.5;
-}
-.tile > b{
-  margin-top:14px;
-}
-@media(max-width:560px){
-  .tile > div{grid-template-rows:175px 2.8em 3.1em auto 10px 1.5em}
-}
-
-
-/* Corrección de imágenes: recorte limpio dentro de las esquinas redondeadas */
-.tile-cover{
-  position:relative;
-  overflow:hidden;
-  isolation:isolate;
-  border-radius:16px;
-  clip-path:inset(0 round 16px);
-}
-.tile-cover img{
-  display:block;
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  max-width:100%;
-  object-fit:cover;
-  border-radius:inherit;
-}
-
-.instagram-footer{display:flex;justify-content:center;padding:28px 18px 34px;border-top:1px solid var(--line)}
-.instagram-link{display:inline-flex;align-items:center;gap:11px;padding:12px 18px;border:1px solid #dce3ee;border-radius:16px;background:#fff;color:#1769e0;text-decoration:none;font-weight:750;box-shadow:0 8px 26px rgba(22,48,88,.07);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .35s,box-shadow .25s}
-.instagram-link:hover{transform:scale(.94);box-shadow:0 12px 30px rgba(22,48,88,.12)}
-.instagram-link:active{transform:scale(.88);opacity:.78}
-.instagram-icon{width:22px;height:22px;display:block;flex:none}
-.playlist-panel{margin:22px 0 30px;padding:20px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#fff,#f5f8fd);box-shadow:0 8px 28px rgba(22,48,88,.055)}
-.playlist-panel .head{margin:0 0 12px}
-.playlist-video{display:block;max-width:100%;height:auto;aspect-ratio:16/9}
-.playlist-link{display:inline-block;margin-top:10px;color:#1769e0;font-weight:700;text-decoration:none}
-.playlist-link:hover{text-decoration:underline}
-
-</style></head><body><header class="top"><div class="brand">FACUNDO <span>MARENGO</span></div><nav><button data-nav="Materias" onclick="setNav('Materias');home()">Materias</button><button data-nav="Libros" onclick="setNav('Libros');books()">Libros</button><button data-nav="Quién soy" onclick="setNav('Quién soy');about()">Quién soy</button><button data-nav="Mi cuenta" onclick="setNav('Mi cuenta');account()">Mi cuenta</button></nav></header><main id="app" class="page"></main><footer>FACUNDO MARENGO · Educación científica para todos</footer>
-<div class="instagram-footer"><a class="instagram-link" href="https://www.instagram.com/facundomareng0/" target="_blank" rel="noopener" aria-label="Visitar Instagram de Facundo Marengo">
-<svg class="instagram-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></svg>
-<span>@Facundomareng0</span><span aria-hidden="true">↗</span></a></div><script>
-const PLAYLISTS={"biologia": "PLhHz2kqcdywG9cxQ_8R_j5VVpn7jFTaFK", "quimica": "PLhHz2kqcdywE3XQTfG-DkE8JHF_u4_t56", "matematica": "PLhHz2kqcdywGkrFX0l0zamuAmFqMFxdy1", "fisica": "PLhHz2kqcdywEoy05vxHYG771f5udrZR3D"};
+</style></head><body><header class="top"><div class="brand">FACUNDO <span>MARENGO</span></div><nav><button data-nav="Materias" onclick="setNav('Materias');home()">Materias</button><button data-nav="Libros" onclick="setNav('Libros');books()">Libros</button><button data-nav="Quién soy" onclick="setNav('Quién soy');about()">Quién soy</button><button data-nav="Mi cuenta" onclick="setNav('Mi cuenta');account()">Mi cuenta</button></nav></header><main id="app" class="page"></main><footer>FACUNDO MARENGO · Educación científica para todos</footer><script>
 const S={
 biologia:{n:'Biología',ico:'',img:'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=90',desc:'La vida: desde las moléculas y las células hasta los organismos y ecosistemas.',u:[
 ['Introducción a la Biología',[
@@ -221,8 +110,8 @@ let subject=null,unit=0,chosen={};const app=document.getElementById('app');funct
 let showcaseIndex=0,showcaseTimer=null;
 function home(){setNav('Materias');subject=null;if(showcaseTimer)clearInterval(showcaseTimer);render(`<section class="hero"><div class="eyebrow">Plataforma educativa</div><h1>El conocimiento<br><span style="color:var(--cyan)">abre caminos.</span></h1><p>Una experiencia de aprendizaje clara y accesible para estudiar ciencias y prepararte para el nivel universitario.</p><button class="btn" onclick="document.getElementById('subjects').scrollIntoView({behavior:'smooth'})">Explorar materias</button><div class="hero-slideshow"><img id="heroSlideImage" class="hero-slide-image" src="${S.biologia.img}" alt="Imagen de Biología"><div class="hero-slide-shade"></div><div class="hero-slide-caption"><strong id="heroSlideTitle">Biología</strong><span id="heroSlideDesc">La ciencia de la vida</span></div><div class="hero-dots" id="heroSlideDots">${Object.entries(S).map(([k,v],i)=>`<button aria-label="Mostrar ${v.n}" class="${i===0?'active':''}" onclick="showcaseGo(${i})"></button>`).join('')}</div></div></section><div class="head" id="subjects"><h2>Elegí tu materia</h2><p class="muted">Se mantienen las imágenes originales de las cuatro materias. Cada aula contiene unidades, videos, exámenes y seguimiento del progreso.</p></div><div class="grid">${Object.entries(S).map(([k,v])=>{let n=v.u.filter((x,i)=>done()[k+'-'+i]).length;return `<article class="tile" onclick="openSubject('${k}')"><div><div class="tile-cover"><img src="${v.img}" alt="${v.n}"></div><h3>${v.n}</h3><p class="muted">${v.desc}</p><p class="subject-price">G. 50.000 <span>/ mes</span></p><div class="progress-wrap"><div class="progress" style="width:${n/v.u.length*100}%"></div></div><small class="muted">Progreso: ${n}/${v.u.length} unidades</small></div><b style="color:var(--cyan)">Entrar al aula →</b></article>`}).join('')}</div>`);showcaseGo(0);showcaseTimer=setInterval(()=>showcaseGo((showcaseIndex+1)%4),5000)}
 function showcaseGo(i){showcaseIndex=i;let item=Object.entries(S)[i];if(!item)return;let image=document.getElementById('heroSlideImage');if(!image)return;image.classList.add('fade');setTimeout(()=>{if(!document.getElementById('heroSlideImage'))return;image.src=item[1].img;image.alt='Imagen de '+item[1].n;document.getElementById('heroSlideTitle').textContent=item[1].n;document.getElementById('heroSlideDesc').textContent=item[1].desc;image.classList.remove('fade');document.querySelectorAll('#heroSlideDots button').forEach((b,j)=>b.classList.toggle('active',j===i));},250)}
-function openSubject(k){setNav('Materias');subject=k;let v=S[k],n=v.u.filter((x,i)=>done()[k+'-'+i]).length,playlist=PLAYLISTS[k];render(`<div class="banner"><div class="eyebrow">Aula virtual</div><h1>${v.n}</h1><p class="muted">${v.desc}</p><p class="subject-price">G. 50.000 <span>/ mes</span></p><div class="progress-wrap"><div class="progress" style="width:${n/v.u.length*100}%"></div></div><small>${n} de ${v.u.length} unidades aprobadas</small></div><section class="playlist-panel"><div class="head"><h2>Clases de ${v.n}</h2><p class="muted">Playlist de esta materia. Reproducí las clases desde aquí.</p></div><iframe class="video playlist-video" src="https://www.youtube-nocookie.com/embed/videoseries?list=${playlist}" title="Playlist de ${v.n}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe><a class="playlist-link" href="https://www.youtube.com/playlist?list=${playlist}" target="_blank" rel="noopener">Abrir playlist en YouTube ↗</a></section><div class="head"><h2>Unidades y exámenes</h2><p class="muted">Elegí una unidad para estudiar y realizar su evaluación.</p></div>${v.u.map((u,i)=>`<button class="unit" onclick="openUnit('${k}',${i})"><span><b>${i+1}. ${u[0]}</b><small>Videos y examen · 10 preguntas</small></span><span class="unit-progress"><b>${done()[k+'-'+i]?'✓ Aprobado':'Pendiente'}</b><div class="progress-wrap"><div class="progress" style="width:${done()[k+'-'+i]?100:0}%"></div></div><small>${done()[k+'-'+i]?'100% completado':'0% completado'}</small></span></button>`).join('')}<div class="card" style="margin-top:20px"><h3>Certificado de ${v.n}</h3><p class="muted">Se habilita al aprobar las cuatro unidades con un mínimo del 70%.</p><button class="btn ${n===v.u.length?'':'secondary'}" ${n===v.u.length?'':'disabled'} onclick="certificate('${k}')">Ver certificado</button></div><button class="ghost" onclick="home()">← Volver a materias</button>`)}
-function openUnit(k,i){subject=k;unit=i;chosen={};let v=S[k],u=v.u[i];render(`<div class="banner"><div class="eyebrow">${v.n} · Unidad ${i+1}</div><h1>${u[0]}</h1><p class="muted">Revisá el material audiovisual y luego completá el examen de diez preguntas.</p></div><div class="head"><h2>Videos: ${u[0]}</h2><p class="muted">El espacio está preparado para insertar el enlace de la playlist o del video de cada unidad.</p></div><div class="video-grid"><div><iframe class="video" src="https://www.youtube-nocookie.com/embed/videoseries?list=${PLAYLISTS[k]}" title="Playlist de ${v.n}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe><small class="muted">Playlist completa de ${v.n}: material audiovisual para acompañar esta unidad.</small><p><a class="playlist-link" href="https://www.youtube.com/playlist?list=${PLAYLISTS[k]}" target="_blank" rel="noopener">Ver todos los videos en YouTube ↗</a></p></div></div><div class="card" style="margin-top:18px"><h3>Barra de progreso del examen</h3><div class="progress-wrap"><div id="prog" class="progress"></div></div><small id="proglabel" class="muted">0 de 10 respondidas</small></div><div class="head"><h2>Examen: ${u[0]}</h2><p class="muted">10 preguntas · Elegí una respuesta por pregunta.</p></div><form onsubmit="grade(event)">${u[1].map((q,j)=>`<div class="qbox"><b>${j+1}. ${q[0]}</b>${q[1].map((o,z)=>`<button type="button" class="opt" id="o${j}-${z}" onclick="pick(${j},${z})">${'ABCD'[z]}. ${o}</button>`).join('')}</div>`).join('')}<button class="btn" type="submit">Corregir examen</button></form><div id="result"></div><button class="ghost" onclick="openSubject('${k}')">← Volver a unidades</button>`)}
+function openSubject(k){setNav('Materias');subject=k;let v=S[k],n=v.u.filter((x,i)=>done()[k+'-'+i]).length;render(`<div class="banner"><div class="eyebrow">Aula virtual</div><h1>${v.n}</h1><p class="muted">${v.desc}</p><p class="subject-price">G. 50.000 <span>/ mes</span></p><div class="progress-wrap"><div class="progress" style="width:${n/v.u.length*100}%"></div></div><small>${n} de ${v.u.length} unidades aprobadas</small></div><div class="head"><h2>Unidades y exámenes</h2><p class="muted">Cada sección tiene diez preguntas independientes de nivel introductorio-universitario.</p></div>${v.u.map((u,i)=>`<button class="unit" onclick="openUnit('${k}',${i})"><span><b>${i+1}. ${u[0]}</b><small>Videos y examen · 10 preguntas</small></span><span class="unit-progress"><b>${done()[k+'-'+i]?'✓ Aprobado':'Pendiente'}</b><div class="progress-wrap"><div class="progress" style="width:${done()[k+'-'+i]?100:0}%"></div></div><small>${done()[k+'-'+i]?'100% completado':'0% completado'}</small></span></button>`).join('')}<div class="card" style="margin-top:20px"><h3>Certificado de ${v.n}</h3><p class="muted">Se habilita al aprobar las cuatro unidades con un mínimo del 70%.</p><button class="btn ${n===v.u.length?'':'secondary'}" ${n===v.u.length?'':'disabled'} onclick="certificate('${k}')">Ver certificado</button></div><button class="ghost" onclick="home()">← Volver a materias</button>`)}
+function openUnit(k,i){subject=k;unit=i;chosen={};let v=S[k],u=v.u[i];render(`<div class="banner"><div class="eyebrow">${v.n} · Unidad ${i+1}</div><h1>${u[0]}</h1><p class="muted">Revisá el material audiovisual y luego completá el examen de diez preguntas.</p></div><div class="head"><h2>Videos: ${u[0]}</h2><p class="muted">El espacio está preparado para insertar el enlace de la playlist o del video de cada unidad.</p></div><div class="video-grid"><div><iframe class="video" src="https://www.youtube-nocookie.com/embed?listType=search&list=${encodeURIComponent(v.n+' '+u[0]+' clase') }" title="Buscar videos educativos" allowfullscreen></iframe><small class="muted">Búsqueda de clases relacionadas. Podés sustituir el enlace por tu video o playlist exactos.</small></div></div><div class="card" style="margin-top:18px"><h3>Barra de progreso del examen</h3><div class="progress-wrap"><div id="prog" class="progress"></div></div><small id="proglabel" class="muted">0 de 10 respondidas</small></div><div class="head"><h2>Examen: ${u[0]}</h2><p class="muted">10 preguntas · Elegí una respuesta por pregunta.</p></div><form onsubmit="grade(event)">${u[1].map((q,j)=>`<div class="qbox"><b>${j+1}. ${q[0]}</b>${q[1].map((o,z)=>`<button type="button" class="opt" id="o${j}-${z}" onclick="pick(${j},${z})">${'ABCD'[z]}. ${o}</button>`).join('')}</div>`).join('')}<button class="btn" type="submit">Corregir examen</button></form><div id="result"></div><button class="ghost" onclick="openSubject('${k}')">← Volver a unidades</button>`)}
 function pick(q,a){chosen[q]=a;for(let z=0;z<4;z++)document.getElementById(`o${q}-${z}`).classList.toggle('selected',z===a);let n=Object.keys(chosen).length;document.getElementById('prog').style.width=n*10+'%';document.getElementById('proglabel').textContent=n+' de 10 respondidas'}
 function grade(e){e.preventDefault();let qs=S[subject].u[unit][1];if(Object.keys(chosen).length!==10){alert('Respondé las diez preguntas antes de corregir.');return}let score=0;qs.forEach((q,j)=>{if(chosen[j]===q[2])score++;q[1].forEach((_,z)=>{let el=document.getElementById(`o${j}-${z}`);el.disabled=true;if(z===q[2])el.classList.add('correct');else if(z===chosen[j])el.classList.add('wrong')})});let pct=score*10,pass=pct>=70,d=done();if(pass)d[subject+'-'+unit]=true;save(d);document.getElementById('result').innerHTML=`<div class="result"><h3>${pass?'¡Unidad aprobada!':'Todavía no alcanzaste el mínimo'}</h3><b>Resultado: ${score}/10 · ${pct}%</b><p>${pass?'La unidad quedó registrada como aprobada.':'Necesitás al menos 7 respuestas correctas. Podés volver a intentarlo.'}</p><button class="btn" onclick="openSubject('${subject}')">Volver a las unidades</button></div>`}
 function certificate(k){let v=S[k];if(v.u.some((x,i)=>!done()[k+'-'+i]))return;render(`<div class="cert"><div style="letter-spacing:.2em">FACUNDO MARENGO · EDUCACIÓN</div><h2>Certificado de aprobación</h2><p>Se certifica que</p><input id="student" placeholder="Nombre y apellido del estudiante"><p>ha completado satisfactoriamente el curso de</p><h2>${v.n}</h2><p>y ha aprobado las evaluaciones de todas sus unidades.</p><p style="margin-top:35px">____________________________<br>Facundo Marengo</p><small>Certificado educativo emitido por esta plataforma.</small></div><p style="text-align:center"><button class="btn" onclick="window.print()">Imprimir / Guardar como PDF</button> <button class="ghost" onclick="openSubject('${k}')">Volver</button></p>`)}
