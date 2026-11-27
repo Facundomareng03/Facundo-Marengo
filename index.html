@@ -310,7 +310,7 @@ body.book-preview-open{overflow:hidden}
 </style>
 
 <style id="automatic-day-night-theme">
-/* Tema automático: claro de 07:00 a 18:59 y oscuro de 19:00 a 06:59 */
+/* Tema automático: claro de 06:00 a 17:59 y oscuro de 18:00 a 05:59 */
 html[data-theme="dark"]{
   color-scheme:dark;
   --bg:#0b1220;--p:#151f30;--p2:#1b2940;--line:#2b3b52;
@@ -538,7 +538,7 @@ home();
 (()=>{
   const updateAutomaticTheme=()=>{
     const hour=new Date().getHours();
-    const isNight=hour>=19||hour<7;
+    const isNight=hour>=18||hour<6;
     const theme=isNight?'dark':'light';
     document.documentElement.dataset.theme=theme;
     const meta=document.querySelector('meta[name="theme-color"]');
